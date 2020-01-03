@@ -1,0 +1,9 @@
+::1 - - [14/Oct/2018:21:36:36 +0800] "GET /favicon.ico HTTP/1.1" 200 21630
+::1 - - [14/Oct/2018:21:37:38 +0800] "GET /HelloWorld/ HTTP/1.1" 200 57
+::1 - - [14/Oct/2018:21:37:42 +0800] "GET /favicon.ico HTTP/1.1" 200 21630
+::1 - - [14/Oct/2018:21:37:52 +0800] "GET /HelloWorld/ HTTP/1.1" 200 57
+::1 - - [14/Oct/2018:21:37:57 +0800] "GET /favicon.ico HTTP/1.1" 200 21630
+::1 - - [14/Oct/2018:21:38:01 +0800] "GET /HelloWorld/ HTTP/1.1" 200 57
+::1 - - [14/Oct/2018:21:38:02 +0800] "GET /favicon.ico HTTP/1.1" 200 21630
+::1 - - [14/Oct/2018:21:38:03 +0800] "GET /HelloWorld/ HTTP/1.1" 200 57
+::1 - - [14/Oct/2018:21:38:04 +0800] "GET /favicon.ico HTTP/1.1" 200 21630

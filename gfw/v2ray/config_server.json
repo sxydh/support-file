@@ -1,0 +1,118 @@
+{
+  "log": {
+    "access": "/etc/v2ray/access.log",
+    "error": "/etc/v2ray/error.log",
+    "loglevel": "warning"
+  },
+  "inbound": {
+    "port": 11111,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "uuid",
+          "level": 1,
+          "alterId": 64,
+          "security": "auto"
+        }
+      ],
+      "detour": {
+        "to": "dynamicPort"
+      }
+    },
+    "streamSettings": {
+      "network": "mkcp"
+    }
+  },
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  },
+  "inboundDetour": [
+    {
+      "port": 22222,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "uuid",
+            "level": 1,
+            "alterId": 64,
+            "security": "auto"
+          }
+        ]
+      },
+      "allocate": {
+        "strategy": "always"
+      }
+    },
+    {
+      "protocol": "vmess",
+      "port": "10000-40000",
+      "tag": "dynamicPort",
+      "settings": {
+        "default": {
+          "level": 1,
+          "alterId": 32
+        }
+      },
+      "allocate": {
+        "strategy": "random",
+        "concurrency": 2,
+        "refresh": 5
+      },
+      "streamSettings": {
+        "network": "mkcp"
+      }
+    }
+  ],
+  "outboundDetour": [
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "0.0.0.0/8",
+            "10.0.0.0/8",
+            "100.64.0.0/10",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "172.16.0.0/12",
+            "192.0.0.0/24",
+            "192.0.2.0/24",
+            "192.168.0.0/16",
+            "198.18.0.0/15",
+            "198.51.100.0/24",
+            "203.0.113.0/24",
+            "::1/128",
+            "fc00::/7",
+            "fe80::/10"
+          ],
+          "outboundTag": "blocked"
+        }
+      ]
+    }
+  },
+  "transport": {
+    "kcpSettings": {
+      "mtu": 1350,
+      "tti": 20,
+      "uplinkCapacity": 20,
+      "downlinkCapacity": 100,
+      "congestion": false,
+      "readBufferSize": 1,
+      "writeBufferSize": 1,
+      "header": {
+        "type": "srtp"
+      }
+    }
+  }
+}

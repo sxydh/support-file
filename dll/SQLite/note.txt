@@ -1,0 +1,2 @@
+1. Precompiled Statically-Linked Binaries for 32-bit Windows (.NET Framework 4.5);
+2. This binary package features the mixed-mode assembly and contains all the binaries for the x86 version of the System.Data.SQLite 1.0.109.0 (3.24.0) package. The Visual C++ 2012 Update 4 runtime for x86 is statically linked. The .NET Framework 4.5 is required. 
