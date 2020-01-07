@@ -19,7 +19,7 @@ do
             sudo bash go.sh
 
             rm -f config_server.json
-            wget https://raw.githubusercontent.com/sxydh/other-data/master/gfw/v2ray/config_server.json
+            wget https://raw.githubusercontent.com/sxydh/support-file/master/gfw/v2ray/config_server.json
             service v2ray stop
             rm -f /etc/v2ray/config.json
             mv config_server.json /etc/v2ray/config.json
@@ -79,7 +79,7 @@ do
             bash initcfg.sh
 
             rm -f user-config.json
-            wget https://raw.githubusercontent.com/sxydh/other-data/master/gfw/ssr/user-config.json
+            wget https://raw.githubusercontent.com/sxydh/support-file/master/gfw/ssr/user-config.json
 
             port="$(shuf -i 10000-40000 -n 1 2>&1)"
             occupy="$(lsof -i :$port 2>&1)"
