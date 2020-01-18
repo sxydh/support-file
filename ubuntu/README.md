@@ -22,6 +22,8 @@ Ubuntu guide
     cp ./app.war /root/Desktop/keep/apache/tomcat-server/webapps/
     #复制文件夹
     cp -r ./tomcat-server ./tomcat-client
+    #查找文件
+    find . -name 'container_debug' -print # 查找当前目录及所有子目录名为container_debug的文件
     #列出所有文件
     ls -a
     #以每行一个文件的长格式列出文件的类型, 访问权限, 链接数, 用户属主, 用户组, 文件大小, 最后修改时间和文件名等信息

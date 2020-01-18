@@ -43,14 +43,19 @@ public class Proxy {
         }
     }
 
-    @PostMapping("/api/request")
+    @PostMapping(value = { "/api/request", "/api/request/*" })
     @ResponseBody
     public String proxy(HttpServletRequest request) throws IOException {
         String requestBody = StreamUtils.copyToString(request.getInputStream(), StandardCharsets.UTF_8);
         JsonNode jsonNode = JacksonUtils.getObjectMapper().readTree(requestBody);
         String result = "";
         CloseableHttpClient client = HttpClients.createDefault();
-        String targetUrl = "http://127.0.0.1:8080/" + jsonNode.get("url").toString().replace("\"", "");
+        String targetUrl = jsonNode.get("url").toString().replace("\"", "");
+        if (targetUrl.contains("stat")) {
+            targetUrl = "http://127.0.0.1:9090/" + targetUrl;
+        } else {
+            targetUrl = "http://127.0.0.1:8080/" + targetUrl;
+        }
         HttpPost post = new HttpPost(targetUrl);
         try {
             String payload = jsonNode.get("reqdata").toString();
