@@ -69,5 +69,14 @@ SQLite simple guide
    
    /*select*/
    select * from test;
+
+   /*strftime*/
+   select strftime('%Y-%m-%d %H:%M:%S.%s', '2014-10-07 02:34:56'); -- 2014-10-07 02:34:56.1412649296
+
+   /*substr*/
+   select substr('abcdef', 1, 2); -- ab
+
+   /*time*/
+   select time(2*3600, 'unixepoch'); -- 02:00:00
    ```
   
