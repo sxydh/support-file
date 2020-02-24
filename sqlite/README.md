@@ -52,7 +52,7 @@ SQLite simple guide
    select cast('100' as int); -- 100
 
    /*group_concat*/
-   select group_concat(id) from psy_state group by date;
+   select group_concat(id) from psy_state group by date; -- default','
    select group_concat(id, '-') from psy_state group by date;
 
    /*insert*/
