@@ -15,7 +15,7 @@ Oracle common commands
     /*Query the current database name*/
     SELECT name,dbid FROM v$database;
 
-    /*查看所有用户表*/
+    /*list all tables*/
     SELECT owner, table_name FROM dba_tables;
   
     /*Determine if the database is single or multiple instances*/
