@@ -227,7 +227,7 @@ Oracle common commands
     [*ANONYMOUS*](./ANONYMOUS.md)    
     [*BULK COLLECT*](./BULK%20COLLECT.md)    
     [*CURSOR*](./CURSOR.md)    
-    [*DBLink*](./DBLINK.md)    
+    [*DBLINK*](./DBLINK.md)    
     [*EXCEPTION*](./EXCEPTION.md)    
     [*FUNCTION*](./FUNCTION.md)    
     [*LOOP*](./LOOP.md)
