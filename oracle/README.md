@@ -14,6 +14,9 @@ Oracle common commands
     ```sql
     /*Query the current database name*/
     SELECT name,dbid FROM v$database;
+
+    /*查看所有用户表*/
+    SELECT owner, table_name FROM dba_tables;
   
     /*Determine if the database is single or multiple instances*/
     SELECT parallel FROM v$instance;
@@ -224,7 +227,7 @@ Oracle common commands
     [*ANONYMOUS*](./ANONYMOUS.md)    
     [*BULK COLLECT*](./BULK%20COLLECT.md)    
     [*CURSOR*](./CURSOR.md)    
-    [*DBLink*](./DBLink.md)    
+    [*DBLink*](./DBLINK.md)    
     [*EXCEPTION*](./EXCEPTION.md)    
     [*FUNCTION*](./FUNCTION.md)    
     [*LOOP*](./LOOP.md)
@@ -340,7 +343,7 @@ Oracle common commands
     SELECT MONTHS_BETWEEN(TO_DATE('02-02-1995', 'MM-DD-YYYY'),TO_DATE('01-01-1995', 'MM-DD-YYYY')) "Months" FROM DUAL;   --1.03225806451613
     
     /*NLSSORT: returns the string of bytes used to sort char*/
-    SELECT * FROM test ORDER BY NLSSORT(char1,'NLS_SORT=SCHINESE_PINYIN_M');
+    SELECT * FROM test ORDER BY NLSSORT(char1, 'NLS_SORT=SCHINESE_PINYIN_M');
     
     /*NVL: lets you replace null (returned as a blank) with a string in the results of a query*/
     SELECT NVL(cid,-1) FROM test;
