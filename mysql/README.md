@@ -101,8 +101,26 @@
     /*CONCAT: 拼接字段, 注意如果任一行处拼接时, 有一个值是null, 该处的拼接结果将会是null*/
     SELECT CONCAT(`columnNameA`,'chars',`columnNameB`) FROM `tableName`; 
 
+    /*DELETE*/
+    DELETE p FROM person p, person d WHERE p.email = d.email AND p.id > d.id; -- 删除重复邮箱
+
     /*GROUP BY*/
     SELECT GROUP_CONCAT(id), GROUP_CONCAT(user_id), node_id FROM CS_USER_REF_NODE GROUP BY node_id HAVING COUNT(id) >= 1; -- HAVING条件仅针对每一个分组
+
+    /*IF*/
+    SELECT DISTINCT 
+      a.Num ConsecutiveNums 
+    FROM
+      (SELECT 
+        t.Num,
+        @cnt := IF(@pre = t.Num, @cnt + 1, 1) cnt, -- 三元表达式
+        @pre := t.Num pre 
+      FROM
+        LOGS t,
+        (SELECT 
+          @pre := NULL, -- 变量声明, 初始化时没有值一定要赋值为NULL, 否则会有错误结果
+          @cnt := 0) b) a 
+    WHERE a.cnt >= 3 
 
     /*LIMIT*/ 
     SELECT * FROM `tableName` LIMIT 2,3; -- 不包含第二行, 取后三行
@@ -147,6 +165,9 @@
     /*ROW_NUMBER(): since version 8.0*/
     SELECT ref.*, ROW_NUMBER() OVER(PARTITION BY node_id ORDER BY createtime DESC) rnum FROM CS_USER_REF_NODE ref;
 
+    /*ROWNUM*/
+    SELECT e.*, @rownum := @rownum + 1 rn FROM employee e, (SELECT @rownum := 0) t; -- 获取行号
+
     /*DATE_FORMAT*/
     SELECT DATE_FORMAT(createtime, '%Y-%m-%d %T') FROM CS_ORDER;
 
@@ -163,3 +184,4 @@
 
   * 存储过程和函数   
     [*Hierarchical queries*](./HIE%20QUERY.md)
+    [*Solution*](./SOLUTION.md)

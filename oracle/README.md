@@ -265,6 +265,9 @@ Oracle common commands
   
     /*CASE WHEN: let you use IF ... THEN ... ELSE logic in SQL statements without having to invoke procedures*/
     SELECT CASE WHEN t.name='name' THEN 'case name' ELSE null END AS newName FROM test t;
+
+    /*CAST: converts one built-in datatype or collection-typed value into another built-in datatype or collection-typed value*/
+    SELECT CAST(12.0 AS NUMBER(10, 2)) FROM DUAL; -- 12.00
     
     /*CEIL: returns smallest integer greater than or equal to n*/
     SELECT CEIL(12.6) FROM DUAL
@@ -286,6 +289,10 @@ Oracle common commands
 
     /*EXECUTE: only for SQL Plus*/
     EXECUTE procedure_test();
+
+    /*FM: A format model is a character literal that describes the format of datetime or numeric data stored in a character string*/
+    /*https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements004.htm*/
+    SELECT TO_CHAR(12.0, 'FM99.00') FROM DUAL; -- 12.00
   
     /*GROUP BY: can be used in a SELECT statement to collect data across multiple records and group the results by one or more columns, in more simple words GROUP BY statement is used in conjunction with the aggregate functions to group the result-set by one or more columns*/
     SELECT name, SUM(value) FROM testa GROUP BY name;
