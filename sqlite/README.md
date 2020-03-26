@@ -48,8 +48,11 @@ SQLite simple guide
    ```
  * 数据
    ```sql
+   /*cast*/
+   select cast('100' as int); -- 100
+
    /*group_concat*/
-   select group_concat(id) from psy_state group by date;
+   select group_concat(id) from psy_state group by date; -- default','
    select group_concat(id, '-') from psy_state group by date;
 
    /*insert*/
@@ -57,8 +60,23 @@ SQLite simple guide
 
    /*on*/
    insert into test (id, name) values ('1', 'name1') on conflict(id) do update set id = id, name = 'name1-1'
+
+   /*printf*/
+   select printf("%.2f", 0.2658); -- 0.27
+   
+   /*round*/
+   select round(59.9, 0); -- 60
    
    /*select*/
    select * from test;
+
+   /*strftime*/
+   select strftime('%Y-%m-%d %H:%M:%S.%s', '2014-10-07 02:34:56'); -- 2014-10-07 02:34:56.1412649296
+
+   /*substr*/
+   select substr('abcdef', 1, 2); -- ab
+
+   /*time*/
+   select time(2*3600, 'unixepoch'); -- 02:00:00
    ```
   

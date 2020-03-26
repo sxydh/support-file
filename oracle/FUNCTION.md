@@ -17,9 +17,12 @@
   CREATE OR REPLACE FUNCTION function_a(x IN NUMBER, y IN NUMBER)
     RETURN NUMBER AS
     i NUMBER;
+    j NUMBER;
   BEGIN
-    i := DBMS_RANDOM.VALUE(3, 1000);
-    return x * y * i;
+    i := DBMS_RANDOM.VALUE(3, 1000); -- 随机数
+    SELECT i INTO j FROM DUAL; -- 变量可以直接使用
+    DBMS_OUTPUT.PUT_LINE(j); -- 控制台输出
+    return x * y * i * j;
   END function_a;
   ```
 

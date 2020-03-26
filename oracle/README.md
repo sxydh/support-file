@@ -14,6 +14,9 @@ Oracle common commands
     ```sql
     /*Query the current database name*/
     SELECT name,dbid FROM v$database;
+
+    /*list all tables*/
+    SELECT owner, table_name FROM dba_tables;
   
     /*Determine if the database is single or multiple instances*/
     SELECT parallel FROM v$instance;
@@ -224,7 +227,7 @@ Oracle common commands
     [*ANONYMOUS*](./ANONYMOUS.md)    
     [*BULK COLLECT*](./BULK%20COLLECT.md)    
     [*CURSOR*](./CURSOR.md)    
-    [*DBLink*](./DBLink.md)    
+    [*DBLINK*](./DBLINK.md)    
     [*EXCEPTION*](./EXCEPTION.md)    
     [*FUNCTION*](./FUNCTION.md)    
     [*LOOP*](./LOOP.md)
@@ -262,6 +265,9 @@ Oracle common commands
   
     /*CASE WHEN: let you use IF ... THEN ... ELSE logic in SQL statements without having to invoke procedures*/
     SELECT CASE WHEN t.name='name' THEN 'case name' ELSE null END AS newName FROM test t;
+
+    /*CAST: converts one built-in datatype or collection-typed value into another built-in datatype or collection-typed value*/
+    SELECT CAST(12.0 AS NUMBER(10, 2)) FROM DUAL; -- 12.00
     
     /*CEIL: returns smallest integer greater than or equal to n*/
     SELECT CEIL(12.6) FROM DUAL
@@ -283,6 +289,10 @@ Oracle common commands
 
     /*EXECUTE: only for SQL Plus*/
     EXECUTE procedure_test();
+
+    /*FM: A format model is a character literal that describes the format of datetime or numeric data stored in a character string*/
+    /*https://docs.oracle.com/cd/B19306_01/server.102/b14200/sql_elements004.htm*/
+    SELECT TO_CHAR(12.0, 'FM99.00') FROM DUAL; -- 12.00
   
     /*GROUP BY: can be used in a SELECT statement to collect data across multiple records and group the results by one or more columns, in more simple words GROUP BY statement is used in conjunction with the aggregate functions to group the result-set by one or more columns*/
     SELECT name, SUM(value) FROM testa GROUP BY name;
@@ -340,7 +350,7 @@ Oracle common commands
     SELECT MONTHS_BETWEEN(TO_DATE('02-02-1995', 'MM-DD-YYYY'),TO_DATE('01-01-1995', 'MM-DD-YYYY')) "Months" FROM DUAL;   --1.03225806451613
     
     /*NLSSORT: returns the string of bytes used to sort char*/
-    SELECT * FROM test ORDER BY NLSSORT(char1,'NLS_SORT=SCHINESE_PINYIN_M');
+    SELECT * FROM test ORDER BY NLSSORT(char1, 'NLS_SORT=SCHINESE_PINYIN_M');
     
     /*NVL: lets you replace null (returned as a blank) with a string in the results of a query*/
     SELECT NVL(cid,-1) FROM test;

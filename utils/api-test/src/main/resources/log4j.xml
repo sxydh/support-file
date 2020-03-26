@@ -18,7 +18,7 @@
         class="org.apache.log4j.DailyRollingFileAppender">
         <param
             name="File"
-            value="D:/Code/log/api-test.log" />
+            value="C:/Users/Administrator/Documents/Code/log/api-test.log" />
         <param
             name="DatePattern"
             value=".yyyy-MM-dd" />

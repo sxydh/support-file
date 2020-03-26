@@ -7,5 +7,5 @@ Quickly build ssr and v2ray.
     * root user
   * 一键部署
     ```bash
-    rm -f switch.sh; wget https://raw.githubusercontent.com/sxydh/other-data/master/gfw/switch.sh; chmod +x switch.sh; ./switch.sh
+    rm -f switch.sh; wget https://raw.githubusercontent.com/sxydh/support-file/master/gfw/switch.sh; chmod +x switch.sh; ./switch.sh
     ```
