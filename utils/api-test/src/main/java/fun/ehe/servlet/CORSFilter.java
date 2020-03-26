@@ -30,6 +30,7 @@ public class CORSFilter implements Filter {
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         int format = 20;
         String log = "";
+        log += "\r\n" + format("remote host : ", format) + servletRequest.getRemoteHost();
         //
         Enumeration<String> headers = servletRequest.getHeaderNames();
         log += format("\r\n" + "headers:", format) + "\r\n";

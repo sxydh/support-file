@@ -54,7 +54,7 @@ public class GateFilter implements Filter {
                     //
                     + "\r\nspend: " + spend
                     //
-                    + "\r\nresponse body:\r\n" + JacksonUtils.pretty(new String(responseWrapper.getCopy()));
+                    + "\r\nresponse body:\r\n" + new String(responseWrapper.getCopy());
             LOGGER.info(Const.LOGGER_FORMAT_INFO, content);
         }
     }
