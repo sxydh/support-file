@@ -1,0 +1,39 @@
+{
+  "inbound": {
+    "port": 1080,
+    "listen": "127.0.0.1",
+    "protocol": "socks",
+    "domainOverride": [
+      "tls",
+      "http"
+    ],
+    "settings": {
+      "auth": "noauth",
+      "udp": false
+    }
+  },
+  "outbound": {
+    "protocol": "vmess",
+    "settings": {
+      "vnext": [
+        {
+          "address": "www.bhe.net.cn",
+          "port": 443,
+          "users": [
+            {
+              "id": "69e6492a-ede8-41b8-a555-5954d669a44e",
+              "alterId": 64
+            }
+          ]
+        }
+      ]
+    },
+    "streamSettings": {
+      "network": "ws",
+      "security": "tls",
+      "wsSettings": {
+        "path": "/one"
+      }
+    }
+  }
+}
