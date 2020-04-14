@@ -2100,8 +2100,6 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.wrap_before_conditional_operator=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.wrap_before_or_operator_multicatch=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.wrap_outer_expressions_when_nested=true
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.userLibrary.basics=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="/basics/src/main/resources/lib/Oracle 10g 10.2.0.1.0 JDBC_ojdbc14.jar"/>\r\n</userlibrary>\r\n
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.userLibrary.gm-to-sp=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<userlibrary systemlibrary\="false" version\="2">\r\n\t<archive path\="/gm-to-sp Maven Webapp/src/main/webapp/WEB-INF/lib/hibernate-proxool-4.1.0.Final.jar"/>\r\n\t<archive path\="/gm-to-sp Maven Webapp/src/main/webapp/WEB-INF/lib/Oracle 10g 10.2.0.1.0 JDBC_ojdbc14.jar"/>\r\n\t<archive path\="/gm-to-sp Maven Webapp/src/main/webapp/WEB-INF/lib/proxool-0.9.1.jar"/>\r\n\t<archive path\="/gm-to-sp Maven Webapp/src/main/webapp/WEB-INF/lib/proxool-cglib.jar"/>\r\n\t<archive path\="/gm-to-sp Maven Webapp/src/main/webapp/WEB-INF/lib/simplecaptcha-1.2.1.jar"/>\r\n</userlibrary>\r\n
 /instance/org.eclipse.jdt.debug.ui/org.eclipse.debug.ui.VariableView.org.eclipse.jdt.debug.ui.show_null_entries=true
 /instance/org.eclipse.jdt.debug.ui/org.eclipse.jdt.debug.ui.prompt_unable_to_install_breakpoint=false
 /instance/org.eclipse.jdt.debug/org.eclipse.jdt.debug.PREF_HCR_WITH_COMPILATION_ERRORS=true
