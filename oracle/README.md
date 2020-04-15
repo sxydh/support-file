@@ -358,6 +358,9 @@ Oracle common commands
     /*NVL2: lets you determine the value returned by a query based on whether a specified expression is null or not   null, if expr1 is not null, then NVL2 returns expr2, if expr1 is null, then NVL2 returns expr3*/
     SELECT NVL2(NULL,2,3) FROM DUAL;
 
+    /*NUMTODSINTERVAL: converts n to an INTERVAL DAY TO SECOND literal*/
+    SELECT SYSDATE, SYSDATE + NUMTODSINTERVAL(10, 'minute') AS R FROM DUAL; -- 2020/4/15 19:07:23	2020/4/15 19:17:23, 常用单位有'day', 'hour', 'minute', 'second'
+
     /*ODCINUMBERLIST: list of values to rows*/
     SELECT DISTINCT COLUMN_VALUE FROM TABLE(SYS.ODCINUMBERLIST(1, 1, 2, 3, 3, 4, 4, 5));
     SELECT DISTINCT COLUMN_VALUE FROM TABLE(SYS.ODCIVARCHAR2LIST('1', '1', '2', '3', '3', '4', '4', '5'));
