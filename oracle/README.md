@@ -458,6 +458,9 @@ Oracle common commands
     
     /*TO_DATE: converts char of CHAR, VARCHAR2, NCHAR, or NVARCHAR2 datatype to a value of DATE datatype*/
     SELECT * FROM test WHERE ctime>=TO_DATE('2018/11/13 13:00:03','yyyy-mm-dd hh24:mi:ss');
+
+    /*TO_NUMBER: converts expr to a value of NUMBER datatype*/
+    SELECT TO_NUMBER('1') FROM DUAL;
   
     /*TRIM: enables you to trim leading or trailing characters (or both) from a character string*/
     SELECT TRIM(BOTH '*' FROM '****Hidden****'),TRIM(LEADING '*' FROM '****Hidden****'),TRIM(TRAILING '*' FROM   '****Hidden****') FROM DUAL;
