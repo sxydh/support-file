@@ -35,8 +35,8 @@ Oracle common commands
     SELECT * FROM dba_tablespaces;
     
     /*Create a table space*/
-    CREATE BIGFILE TABLESPACE test --the tablespace is BIGFILE, which means that you cannot add a second data file   later, the replacement is SMALLFILE, which can consist of multiple data files
-    DATAFILE 'path\TEST.DBF'
+    CREATE SMALLFILE TABLESPACE keep --the tablespace is BIGFILE, which means that you cannot add a second data file later, the replacement is SMALLFILE, which can consist of multiple data files
+    DATAFILE 'path\KEEP.DBF'
     SIZE 100M AUTOEXTEND ON NEXT 10M MAXSIZE 1024M
     LOGGING --all operations on the segment in the tablespace will generate redo content, which is the default
     EXTENT MANAGEMENT LOCAL --tablespace will use bitmap to allocate extent, which is the default
@@ -59,15 +59,15 @@ Oracle common commands
     ALTER DATABASE DATAFILE 'path\TEST.DBF' RESIZE 1024M;
     
     /*Create a temporary tablespace*/
-    CREATE TEMPORARY TABLESPACE test_temp
-    TEMPFILE 'path\TEST_TEMP.DBF'
-    SIZE 10M AUTOEXTEND ON NEXT 50M MAXSIZE 2048M
+    CREATE TEMPORARY TABLESPACE keep_temp
+    TEMPFILE 'path\KEEP_TEMP.DBF'
+    SIZE 10M AUTOEXTEND ON NEXT 50M MAXSIZE 1024M
     EXTENT MANAGEMENT LOCAL;
     
     /*Alter tempfile size*/
     ALTER DATABASE TEMPFILE 'path\TEST_TEMP.DBF' RESIZE 1024M;
     
-    /*Delete a tablespace*/
+    /*Delete a tablespace or temporary tablespace*/
     DROP TABLESPACE test INCLUDING CONTENTS AND DATAFILES;
     ```
 
@@ -77,8 +77,8 @@ Oracle common commands
     SELECT * FROM all_users;
     
     /*Create a user, note, do not forget grant the quota to user*/
-    CREATE USER test IDENTIFIED BY 123
-    DEFAULT TABLESPACE test TEMPORARY TABLESPACE test_temp
+    CREATE USER keep IDENTIFIED BY 123
+    DEFAULT TABLESPACE keep TEMPORARY TABLESPACE keep_temp
     --QUOTA 100M ON test
     --PROFILE developer_profile --name the configuration file that manages resource and password
     --PASSWORD EXPIRE --force users to change their password
@@ -90,7 +90,7 @@ Oracle common commands
     /*Specified tablespace*/
     ALTER USER test DEFAULT TABLESPACE test TEMPORARY TABLESPACE test_temp;
     /*Grant privilege*/
-    GRANT GLOBAL QUERY REWRITE, ON COMMIT REFRESH, SELECT ANY TABLE, CREATE ANY MATERIALIZED VIEW, CREATE SESSION,ALTER SESSION,CREATE ANY TABLE,CREATE VIEW,CREATE SYNONYM,CREATE CLUSTER,CREATE DATABASE LINK,CREATE SEQUENCE,CREATE TRIGGER,CREATE TYPE,CREATE PROCEDURE,CREATE OPERATOR TO test;
+    GRANT GLOBAL QUERY REWRITE, ON COMMIT REFRESH, SELECT ANY TABLE, CREATE ANY MATERIALIZED VIEW, CREATE SESSION,ALTER SESSION,CREATE ANY TABLE,CREATE VIEW,CREATE SYNONYM,CREATE CLUSTER,CREATE DATABASE LINK,CREATE SEQUENCE,CREATE TRIGGER,CREATE TYPE,CREATE PROCEDURE,CREATE OPERATOR TO keep;
   
     /*Lock/unlock user*/
     ALTER USER test ACCOUNT LOCK;
@@ -100,8 +100,8 @@ Oracle common commands
     ALTER USER test PASSWORD EXPIRE;
   
     /*Specified quota*/
-    ALTER USER test QUOTA 5M ON test;
-    ALTER USER test QUOTA UNLIMITED ON test;
+    ALTER USER keep QUOTA 5M ON keep;
+    ALTER USER keep QUOTA UNLIMITED ON keep;
     
     /*Delete user*/
     DROP USER test CASCADE;
@@ -338,10 +338,10 @@ Oracle common commands
     
     /*MERGE INTO: use the statement to select rows from one or more sources for update or insertion into a table or   view, you can specify conditions to determine whether to update or insert into the target table or view*/
     MERGE INTO test t
-    USING (SELECT * FROM test WHERE id=1) tt
-    ON (tt.id=2)
+    USING (SELECT COUNT(0) cnt FROM test WHERE id=1) tt -- 用COUNT当条件, 避免查不到时不执行后续语句
+    ON (tt.cnt>0)
     WHEN MATCHED THEN UPDATE SET t.data='matched' WHERE t.id=70
-    WHEN NOT MATCHED THEN INSERT (t.id) VALUES(74) WHERE (tt.id=1);
+    WHEN NOT MATCHED THEN INSERT (t.id) VALUES(74);
   
     /*MOD: returns the remainder of n2 divided by n1, returns n2 if n1 is 0*/
     SELECT MOD(11, 4) "Modulus" FROM DUAL; --3
