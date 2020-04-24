@@ -1,17 +1,17 @@
 * Define
   ```sql
-  /*Authority check*/
+  /*Authority check, current user*/
   SELECT * FROM user_sys_privs WHERE PRIVILEGE LIKE UPPER('%DATABASE LINK%');
 
-  /*Grant*/
-  GRANT CREATE PUBLIC DATABASE LINK,DROP PUBLIC DATABASE LINK TO test; 
+  /*Grant, db user*/
+  GRANT CREATE PUBLIC DATABASE LINK,DROP PUBLIC DATABASE LINK TO keep; 
 
-  /*Revoke if you want*/
-  REVOKE CREATE PUBLIC DATABASE LINK,DROP PUBLIC DATABASE LINK FROM test; 
+  /*Revoke if you want, db user*/
+  REVOKE CREATE PUBLIC DATABASE LINK,DROP PUBLIC DATABASE LINK FROM keep; 
 
-  /*Create*/
-  CREATE PUBLIC DATABASE LINK link_keep
-  CONNECT TO keep IDENTIFIED BY "123"
+  /*Create, current user*/
+  CREATE PUBLIC DATABASE LINK link_another
+  CONNECT TO another IDENTIFIED BY "123"
   USING '(DESCRIPTION =(ADDRESS_LIST =(ADDRESS =(PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = orcl)))';
 
   /*Drop*/

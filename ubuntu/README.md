@@ -18,6 +18,11 @@ Ubuntu guide
     ```
   * 文件
     ```bash
+    #文件权限
+    #u 表示该文件的拥有者, g 表示与该文件的拥有者属于同一个群体(group)者, o 表示其他以外的人, a 表示这三者皆是
+    #+ 表示增加权限, - 表示取消权限, = 表示唯一设定权限
+    #r 表示可读取, w 表示可写入, x 表示可执行, X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行
+    chmod ugo+r file.txt
     #复制文件
     cp ./app.war /root/Desktop/keep/apache/tomcat-server/webapps/
     #复制文件夹

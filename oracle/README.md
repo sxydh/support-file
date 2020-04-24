@@ -12,21 +12,24 @@ Oracle common commands
     ```
   * Dictionary
     ```sql
-    /*Query the current database name*/
+    /*v$database: query the current database name*/
     SELECT name,dbid FROM v$database;
 
-    /*list all tables*/
+    /*dba_tables: list all tables*/
     SELECT owner, table_name FROM dba_tables;
   
-    /*Determine if the database is single or multiple instances*/
+    /*v$instance: determine if the database is single or multiple instances*/
     SELECT parallel FROM v$instance;
   
-    /*View database initialization parameters*/
+    /*v$parameter, v$spparameter: view database initialization parameters*/
     SELECT name,value FROM v$parameter ORDER BY name; --the current value
     SELECT name,value FROM v$spparameter ORDER BY name; --the local file value
   
-    /*View the size of the memory structure*/
+    /*v$sga_dynamic_components: view the size of the memory structure*/
     SELECT component, current_size, min_size, max_size FROM v$sga_dynamic_components;
+
+    /*user_tab_columns: list all col names*/
+    SELECT table_name, column_name, data_type, data_length FROM user_tab_columns WHERE table_name = 'TEST'; -- 表名大写
     ```
 
   * Table space
@@ -489,6 +492,6 @@ Oracle common commands
      (SELECT * FROM test)
     SELECT * FROM vt;
 
-    /*WM_CONCAT: concatenates the values of the   measure column*/
+    /*WM_CONCAT: concatenates the values of the measure column*/
     SELECT TO_CHAR(WM_CONCAT(id)) FROM t_order WHERE ROWNUM < 5;
     ```
