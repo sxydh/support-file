@@ -31,7 +31,7 @@ Script guide
   * echo
     ```bash
     # 获取命令输出
-    output="$(ls -1 2>&1)" # 或OUTPUT=`ls -1 2>&1`, "2>&1"表示重定向输出
+    output="$(ls -1 2>&1)" # 或OUTPUT=`ls -1 2>&1`, "2>&1"表示标准错误重定向到标准输出
     echo "${output}"
 
     # 断行写法
@@ -119,7 +119,12 @@ Script guide
 
   * nohup
     ```bash
-    nohup [command] & # 后台运行, the & symbol, switches the program to run in the background, the nohup utility makes the command passed as an argument run in thebackground even after you log out
+    # 后台运行, the & symbol, switches the program to run in the background, the nohup utility makes the command passed as an argument run in thebackground even after you log out.
+    # 0 – stdin (standard input), 1 – stdout (standard output), 2 – stderr (standard error).
+    nohup [command] > [file name].log 2>&1 &  
+
+    # 后台运行
+    ./[sh file name].sh > [log file name].log 2>&1 &
     ```
 
   * sed
