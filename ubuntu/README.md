@@ -16,6 +16,7 @@ Ubuntu guide
     #显示所有进程
     ps -e
     ```
+
   * 文件
     ```bash
     #文件权限
@@ -27,6 +28,8 @@ Ubuntu guide
     cp ./app.war /root/Desktop/keep/apache/tomcat-server/webapps/
     #复制文件夹
     cp -r ./tomcat-server ./tomcat-client
+    #Linux export 命令用于设置或显示环境变量
+    export [-fnp][变量名称]=[变量设置值]
     #查找文件
     find . -name 'container_debug' -print # 查找当前目录及所有子目录名为container_debug的文件
     #列出所有文件
@@ -57,7 +60,10 @@ Ubuntu guide
     touch fileName
     #解压rar
     unrar x [file name] #保持文件结构
+    #解压zip
+    unzip [file name]
     ```
+
   * 软件
     ```bash
     #安装JDK8
@@ -67,6 +73,7 @@ Ubuntu guide
     #下载文件
     wget 
     ```
+
   * 文本
     ```bash
     #到行首
@@ -102,7 +109,9 @@ Ubuntu guide
     #强制退出
     :q!
     ```
+
   * [*脚本*](./SCRIPT%20SYNTAX.md)
+  
   * 其它
     ```bash
     #Mirror
