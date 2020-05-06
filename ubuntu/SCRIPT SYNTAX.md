@@ -123,7 +123,7 @@ Script guide
     # 0 – stdin (standard input), 1 – stdout (standard output), 2 – stderr (standard error).
     nohup [command] > [file name].log 2>&1 &  
 
-    # 后台运行
+    # 另外一种后台运行
     ./[sh file name].sh > [log file name].log 2>&1 &
     ```
 
