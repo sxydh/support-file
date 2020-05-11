@@ -9,8 +9,11 @@
   ```sql
   DECLARE job_n NUMBER;
   BEGIN
-    dbms_job.submit ( job_n, 'BEGIN UPDATE test SET value = value + 1; COMMIT; END;', SYSDATE, 'SYSDATE + 1 / (24 * 60 * 60)' ); -- 每隔1秒执行一次
-  COMMIT;
+    dbms_job.submit ( job_n, 
+        WHAT => 'BEGIN UPDATE test SET value = value + 1; COMMIT; END;', 
+        NEXT_DATE => SYSDATE,
+        INTERVAL => 'SYSDATE + 1 / (24 * 60 * 60)' ); -- 每隔一秒执行一次
+    COMMIT;
   END;
   ```
 
@@ -18,6 +21,6 @@
   ```sql
   BEGIN
     dbms_job.remove ( 89 );
-  COMMIT;
+    COMMIT;
   END;
   ```
