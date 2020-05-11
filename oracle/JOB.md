@@ -1,0 +1,23 @@
+* [*Define*](https://docs.oracle.com/cd/E11882_01/server.112/e25494/appendix_a.htm#ADMIN12510)
+
+* 查看
+  ```sql
+  SELECT * FROM dba_jobs s
+  ```
+
+* 创建
+  ```sql
+  DECLARE job_n NUMBER;
+  BEGIN
+    dbms_job.submit ( job_n, 'BEGIN UPDATE test SET value = value + 1; COMMIT; END;', SYSDATE, 'SYSDATE + 1 / (24 * 60 * 60)' ); -- 每隔1秒执行一次
+  COMMIT;
+  END;
+  ```
+
+* 删除
+  ```sql
+  BEGIN
+    dbms_job.remove ( 89 );
+  COMMIT;
+  END;
+  ```
