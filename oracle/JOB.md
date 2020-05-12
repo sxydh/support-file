@@ -1,4 +1,4 @@
-* [*Define*](https://docs.oracle.com/cd/E11882_01/server.112/e25494/appendix_a.htm#ADMIN12510)
+* Define[*简版*](https://docs.oracle.com/cd/E11882_01/server.112/e25494/appendix_a.htm#ADMIN12510), [*详细版*](https://docs.oracle.com/database/121/ARPLS/d_job.htm#ARPLS66573)
 
 * 查看
   ```sql
