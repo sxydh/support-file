@@ -25,7 +25,15 @@
     dbms_job.run(31);  
   END; 
   ```
-
+  
+* 修改
+  ```sql
+  BEGIN 
+    dbms_job.interval(31, 'TRUNC(SYSDATE, ''mi'') + 2 * 60 / (24 * 60 * 60)');
+    COMMIT;
+  END;
+  ```
+  
 * 删除
   ```sql
   BEGIN
