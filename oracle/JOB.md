@@ -19,6 +19,13 @@
   END;
   ```
 
+* 手动执行
+  ```sql
+  BEGIN  
+    dbms_job.run(31);  
+  END; 
+  ```
+
 * 删除
   ```sql
   BEGIN
