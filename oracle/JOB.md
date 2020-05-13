@@ -29,7 +29,7 @@
 * 修改
   ```sql
   BEGIN 
-    dbms_job.interval(31, 'TRUNC(SYSDATE, ''mi'') + 2 * 60 / (24 * 60 * 60)');
+    dbms_job.interval(31, 'TRUNC(SYSDATE, ''mi'') + 2 * 60 / (24 * 60 * 60)'); -- what 同理
     COMMIT;
   END;
   ```
