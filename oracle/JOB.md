@@ -1,4 +1,6 @@
-* [*Define*](https://docs.oracle.com/cd/E11882_01/server.112/e25494/appendix_a.htm#ADMIN12510)
+* Define
+  * [*简版*](https://docs.oracle.com/cd/E11882_01/server.112/e25494/appendix_a.htm#ADMIN12510)
+  * [*详细版*](https://docs.oracle.com/database/121/ARPLS/d_job.htm#ARPLS66573)
 
 * 查看
   ```sql
@@ -17,6 +19,21 @@
   END;
   ```
 
+* 手动执行
+  ```sql
+  BEGIN  
+    dbms_job.run(31);  
+  END; 
+  ```
+  
+* 修改
+  ```sql
+  BEGIN 
+    dbms_job.interval(31, 'TRUNC(SYSDATE, ''mi'') + 2 * 60 / (24 * 60 * 60)'); -- what 同理
+    COMMIT;
+  END;
+  ```
+  
 * 删除
   ```sql
   BEGIN
