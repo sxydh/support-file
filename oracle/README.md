@@ -12,6 +12,9 @@ Oracle common commands
     ```
   * Dictionary
     ```sql
+    /*all_source: 提供以下程序类型的源代码列表：函数、存储过程、触发器、包规格和包正文*/
+    SELECT * FROM all_source;
+
     /*v$database: query the current database name*/
     SELECT name,dbid FROM v$database;
 
@@ -258,6 +261,9 @@ Oracle common commands
     
     /*CALL: suitable for any tool, execute a routine (a standalone procedure or function, or a procedure or function  defined within a type or package) from within SQL*/
     CALL procedure_test();
+
+    /*COUNT*/
+    SELECT COUNT(0) FROM test; -- COUNT(number)或COUNT(*)时计入NULL, COUNT(field)时不计NULL
   
     /*INSERT ALL: is used to add multiple rows with a single INSERT statement*/
     INSERT ALL
