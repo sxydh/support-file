@@ -15,6 +15,9 @@ Oracle common commands
     /*all_source: 提供以下程序类型的源代码列表：函数、存储过程、触发器、包规格和包正文*/
     SELECT * FROM all_source;
 
+    /*all_tab_cols: 提供表信息*/
+    SELECT column_name FROM all_tab_cols WHERE table_name = 'TEST' AND owner = 'KEEP'; -- 获得列名，表名区分大小写
+
     /*v$database: query the current database name*/
     SELECT name,dbid FROM v$database;
 
@@ -295,6 +298,7 @@ Oracle common commands
     /*DBMS*/
     SELECT dbms_random.string('p',10) FROM dual; --'u'/'U': uppercase alpha characters; 'l'/'L': lowercase alpha characters; 'a'/'A': mixed case alpha characters; 'x'/'X': uppercase alpha-numeric characters; 'p'/'P': any printable characters
     SELECT dbms_random.value(-100,100) FROM dual; --(-100~100)
+    SELECT dbms_random.random FROM dual; --RANDOM返回值的范围为: [-2^31, 2^31), 返回的是整数
 
     /*EXECUTE: only for SQL Plus*/
     EXECUTE procedure_test();
