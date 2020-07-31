@@ -1,5 +1,5 @@
 # Profile
-Oracle common commands
+Oracle common commands(DDL, DCL, DQL, DML, TCL)
 
 # Specification
   * [*DBLink*](./DBLink.md)
