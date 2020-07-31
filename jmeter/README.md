@@ -12,6 +12,10 @@ Jmeter guide.
   * 变量引用方式
     * ${var name}
   * 使用CSV文件作为数据源
-    * 测试计划 -> 编辑 -> 添加 -> 配置元件 -> CSV数据文件设置
+    * 编辑 -> 添加 -> 配置元件 -> CSV数据文件设置
     * 设置变量名称，分隔符，循环模式等
+    * 引用
+  * 用户自定义变量
+    * 编辑 -> 添加 -> 配置元件 -> 用户自定义的变量
+    * 添加键值对(值可以引用Jmeter的function)，[*Jmeter支持的function*](https://jmeter.apache.org/usermanual/functions.html#functions)
     * 引用
