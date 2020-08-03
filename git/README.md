@@ -16,10 +16,18 @@ Git guide
   ```
 * 仓库
   ```bash
-  git init
-  git clone <url> <name> #name是可选的
-  git remote add origin <url> #origin是自定义的
-  git push --set-upstream origin master
+  git init #初始化仓库
+  git clone url [name] #name是可选的
+  git remote add origin url #添加远程，origin是自定义的
+  git push --set-upstream origin master #本地关联远程分支
+
+  # 初始化裸仓库，用来建服务器
+  git init --bare reponame
+
+  # 搭建Git服务器参考
+  # * 新建一个裸仓库
+  # * 添加客户端公钥到authorized_keys，该文件可在用户目录下.ssh文件夹内找到，例入root用户在/root/.ssh/，其它用户在/home/username/.ssh/，找不到则新建。公钥可以用PuTTYgen生成，本地必须保存私钥
+  # * 克隆使用(建议用TortoiseGit客户端，方便load指定私钥)：sxydh@172.16.20.128:/home/repo/cprecharge.git。注意sxydh必须拥有读写cprecharge.git的权限，可在建裸仓库时就指定文件夹的拥有者
   ```
 * 分支
   ```bash
