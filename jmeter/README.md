@@ -24,3 +24,6 @@ Jmeter guide.
     * 编辑 -> 添加 -> 配置元件 -> 用户自定义的变量
     * 添加键值对(值可以引用Jmeter的function)，[*Jmeter支持的function*](https://jmeter.apache.org/usermanual/functions.html#functions)
     * 引用
+
+# Reposrt
+  * [*术语表*](https://jmeter.apache.org/usermanual/glossary.html)
