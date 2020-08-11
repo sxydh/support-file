@@ -93,7 +93,14 @@ Ubuntu guide
     tail -200f char-server-app.log
 
     #解压tar
-    tar -xvf apache-tomcat-9.0.22.tar.gz
+    #-z, --gzip, --gunzip, --ungzip   filter the archive through gzip
+    #-j, --bzip2                filter the archive through bzip2
+    #-v, --verbose              verbosely list files processed
+    #-c, --create               create a new archive
+    #-x, --extract, --get       extract files from an archive
+    #-f, --file=ARCHIVE         use archive file or device ARCHIVE
+    tar -xvf apache-tomcat-9.0.22.tar.gz #解压
+    tar -zvcf uri_30100productcheck.gz uri_30100productcheck #压缩
 
     #创建文件
     touch fileName
