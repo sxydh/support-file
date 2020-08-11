@@ -51,6 +51,12 @@ SQLite simple guide
    /*cast*/
    select cast('100' as int); -- 100
 
+   /*date*/
+   select date(datetime(current_timestamp, 'localtime'), '-31 day'); -- 2020-07-09
+
+   /*datetime*/
+   select datetime(current_timestamp, 'localtime'); -- 2020-08-09 21:18:04
+
    /*group_concat*/
    select group_concat(id) from psy_state group by date; -- default','
    select group_concat(id, '-') from psy_state group by date;
@@ -72,6 +78,7 @@ SQLite simple guide
 
    /*strftime*/
    select strftime('%Y-%m-%d %H:%M:%S.%s', '2014-10-07 02:34:56'); -- 2014-10-07 02:34:56.1412649296
+   select strftime('%Y-%m-%d %H:%M:%S.%s', datetime(current_timestamp, 'localtime')); -- 2020-08-09 21:21:28.1597008088
 
    /*substr*/
    select substr('abcdef', 1, 2); -- ab
