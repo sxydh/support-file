@@ -26,12 +26,12 @@ Jmeter guide.
     * 引用
 
 # Remote And Cluster
-  * Slave(Ubuntu)
+  * Slave(Ubuntu)  
     jmeter.properties
     * 设置服务端口```server_port=40100```
     * 禁用ssl```server.rmi.ssl.disable=true```
     * 启动服务```./jmeter-server -Djava.rmi.server.hostname=localhost```
-  * Master(Windows)
+  * Master(Windows)  
     jmeter.properties
     * 禁用ssl```server.rmi.ssl.disable=true```
     * 设置远程服务器```remote_hosts=192.168.243.129:40100,192.168.243.129:40200```
