@@ -8,7 +8,7 @@ Jmeter guide.
   * 建立Request
     * 线程组 -> 编辑 -> 添加 -> 取样器 -> HTTP请求
 
-# Custom variable
+# Custom Variable
   * 变量引用方式
     * ${var name}
   * 使用CSV文件作为数据源
@@ -25,5 +25,29 @@ Jmeter guide.
     * 添加键值对(值可以引用Jmeter的function)，[*Jmeter支持的function*](https://jmeter.apache.org/usermanual/functions.html#functions)
     * 引用
 
-# Reposrt
+# Remote And Cluster
+  * Slave
+    jmeter.properties
+    * 设置服务端口```server_port=40100```
+    * 禁用ssl```server.rmi.ssl.disable=true```
+    * 启动服务```./jmeter-server -Djava.rmi.server.hostname=localhost```
+  * Master
+    jmeter.properties
+    * 禁用ssl```server.rmi.ssl.disable=true```
+    * 设置远程服务器```remote_hosts=192.168.243.129:40100,192.168.243.129:40200```
+    * 启动slave
+      [*启动参数见*](https://jmeter.apache.org/usermanual/get-started.html#options)
+      [*报告参数见*](https://jmeter.apache.org/usermanual/generating-dashboard.html#sample_configuration)
+      ```bash
+      # 只生成jtl，不生成report
+      jmeter -n -t C:\Users\Administrator\Desktop\test.jmx -r -l C:\Users\Administrator\Desktop\rt.jtl
+      # 生成jtl和report
+      jmeter -n -t C:\Users\Administrator\Desktop\test.jmx -r -l C:\Users\Administrator\Desktop\rt.jtl -e -o C:\Users\Administrator\Desktop\report
+      # 根据jtl文件生成report
+      jmeter -g C:\Users\Administrator\Desktop\rt.jtl -o C:\Users\Administrator\Desktop\report
+      # 手动停止测试，第一个参数是命令，第二个参数是端口号，端口号在master命令行启动时显示
+      java -cp ApacheJMeter.jar org.apache.jmeter.util.ShutdownClient StopTestNow 4445
+      ```
+
+# Report
   * [*术语表*](https://jmeter.apache.org/usermanual/glossary.html)
