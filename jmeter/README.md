@@ -36,8 +36,8 @@ Jmeter guide.
     * 禁用ssl```server.rmi.ssl.disable=true```
     * 设置远程服务器```remote_hosts=192.168.243.129:40100,192.168.243.129:40200```
     * 启动slave
-      [*启动参数见*](https://jmeter.apache.org/usermanual/get-started.html#options)
-      [*报告参数见*](https://jmeter.apache.org/usermanual/generating-dashboard.html#sample_configuration)
+      [*启动参数见*](https://jmeter.apache.org/usermanual/get-started.html#options)  
+      [*报告参数见*](https://jmeter.apache.org/usermanual/generating-dashboard.html#sample_configuration)  
       ```bash
       # 只生成jtl，不生成report
       jmeter -n -t C:\Users\Administrator\Desktop\test.jmx -r -l C:\Users\Administrator\Desktop\rt.jtl
