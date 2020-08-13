@@ -8,7 +8,7 @@ JProfiler guide.
       apt-get install libxrender-dev 
       apt-get install libxtst-dev 
       ```
-    * bin下启动```./jprofiler``` 
+    * 启动```bin/jprofiler``` 
     * Tips  
       * 执行bin/jprofiler会产生文件夹/root/.jprofiler11/
       * 通过编辑jprofiler和jpenable可以指定各自jdk路径
@@ -16,7 +16,7 @@ JProfiler guide.
 # Remote
   * 服务端
     * 必须先启动要监控的程序
-    * bin下启动服务```bin/jpenable```，profiling mode选GUI mode，记住端口
+    * 启动服务```bin/jpenable```，profiling mode选GUI mode，记住端口
   * 客户端
     * 使用服务端IP+PORT启动GUI
   * Tips  
