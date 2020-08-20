@@ -28,5 +28,9 @@ Simple nginx guide
     nginx -t
     ```
   * 配置文件样例
-    * [`CORS`](./cors.conf)
+    * [*CORS*](./cors.conf)
+    * [*Load Balancer*](http://nginx.org/en/docs/http/load_balancing.html)
+      * [*round-robin*](./lb-round-robin.conf)
+      * [*weight*](./lb-weight.conf)
+      * [*least-conn*](./lb-least-conn.conf)
   
