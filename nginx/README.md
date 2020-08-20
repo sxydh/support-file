@@ -1,17 +1,32 @@
 # Profile
 Simple nginx guide
+
 # Specification
-* Base CMD
-  ```bash
-  #start server
-  start nginx
-  #reload server
-  nginx -s reload
-  #show status
-  nginx -t
-  #quit nginx
-  nginx -s quit
-  ```
-* Server config
-  * [`nginx.conf`](./nginx.conf)
+  * 基本命令
+    ```bash
+    # Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
+    # 
+    # Options:
+    #   -?,-h         : this help
+    #   -v            : show version and exit
+    #   -V            : show version and configure options then exit
+    #   -t            : test configuration and exit
+    #   -T            : test configuration, dump it and exit
+    #   -q            : suppress non-error messages during configuration testing
+    #   -s signal     : send signal to a master process: stop, quit, reopen, reload
+    #   -p prefix     : set prefix path (default: /usr/share/nginx/)
+    #   -c filename   : set configuration file (default: /etc/nginx/nginx.conf)
+    #   -g directives : set global directives out of configuration file
+
+    # start server
+    systemctl start nginx
+    # reload server
+    nginx -s reload
+    # stop nginx
+    systemctl stop nginx
+    # test configuration and exit
+    nginx -t
+    ```
+  * 配置文件样例
+    * [`CORS`](./cors.conf)
   
