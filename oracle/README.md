@@ -1,9 +1,7 @@
 # Profile
-Oracle common commands(DDL, DCL, DQL, DML, TCL)
+Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, DQL-Data Query Language, DML-Data Manipulation Language, TCL-Transaction Control Language)
 
 # Specification
-  * [*DBLink*](./DBLink.md)
-  
   * SQL Plus
     ```sql
     HELP INDEX;
@@ -156,6 +154,9 @@ Oracle common commands(DDL, DCL, DQL, DML, TCL)
     TABLESPACE test;
     ALTER TABLE test
     ADD CONSTRAINT test_primary_key PRIMARY KEY (ID);
+
+    /*Copy and create table*/
+    CREATE TABLE testb AS SELECT * FROM testa;
     
     /*Query all tables of the current user*/
     SELECT table_name FROM user_tables; 
@@ -248,13 +249,7 @@ Oracle common commands(DDL, DCL, DQL, DML, TCL)
     [*TRIGGER*](./TRIGGER.md)    
     [*TYPE*](./TYPE.md)    
 
-  * DDL
-    ```sql
-    /*Copy and create table*/
-    CREATE TABLE testb AS SELECT * FROM testa;
-    ```
-    
-  * Query and DML
+  * DQL/DML
     ```sql
     /*ABS: returns the absolute value of n*/
     SELECT ABS(-15) FROM DUAL;
