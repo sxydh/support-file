@@ -16,11 +16,17 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
     /*all_tab_cols: 提供表信息*/
     SELECT column_name FROM all_tab_cols WHERE table_name = 'TEST' AND owner = 'KEEP'; -- 获得列名，表名区分大小写
 
+    /*all_users*/
+    SELECT * FROM all_users;
+
     /*v$database: query the current database name*/
     SELECT name,dbid FROM v$database;
 
     /*dba_tables: list all tables*/
     SELECT owner, table_name FROM dba_tables;
+
+    /*dba_tablespaces*/
+    SELECT * FROM dba_tablespaces;
   
     /*v$instance: determine if the database is single or multiple instances*/
     SELECT parallel FROM v$instance;
@@ -38,9 +44,6 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
 
   * Table space
     ```sql
-    /*Query all table spaces*/
-    SELECT * FROM dba_tablespaces;
-    
     /*Create a table space*/
     CREATE SMALLFILE TABLESPACE keep --the tablespace is BIGFILE, which means that you cannot add a second data file later, the replacement is SMALLFILE, which can consist of multiple data files
     DATAFILE 'path\KEEP.DBF'
@@ -80,9 +83,6 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
 
   * User
     ```sql
-    /*Query all users*/
-    SELECT * FROM all_users;
-    
     /*Create a user, note, do not forget grant the quota to user*/
     CREATE USER keep IDENTIFIED BY 123
     DEFAULT TABLESPACE keep TEMPORARY TABLESPACE keep_temp
@@ -164,10 +164,10 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
     SELECT user,table_name FROM all_tables; 
   
     /*Alter table*/
-    ALTER TABLE test ADD (col NUMBER);
-    ALTER TABLE test MODIFY (col VARCHAR2(200) DEFAULT NULL);
-    ALTER TABLE test DROP COLUMN col;
-    ALTER TABLE test RENAME COLUMN col TO col_new;
+    ALTER TABLE test ADD (colname NUMBER [default val] [not null]); --有顺序要求
+    ALTER TABLE test MODIFY (colname VARCHAR2(200) DEFAULT NULL);
+    ALTER TABLE test DROP COLUMN colname;
+    ALTER TABLE test RENAME COLUMN colname TO colname_new;
     ALTER TABLE test READ ONLY;
   
     /*Index*/
@@ -306,7 +306,8 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
     SELECT name, SUM(value) FROM testa GROUP BY name;
 
     /*Hints: Hints are comments in a SQL statement that pass instructions to the Oracle Database optimizer. The optimizer uses these hints to choose an execution plan for the statement, unless some condition exists that prevents the optimizer from doing so*/
-    INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX (tablename (colname)) */ INTO tablename ... --any duplicate key values that are inserted will be silently ignored, rather than causing an ORA-0001 error
+    INSERT /*+ IGNORE_ROW_ON_DUPKEY_INDEX (tablename (colname)) */ INTO tablename ...; --any duplicate key values that are inserted will be silently ignored, rather than causing an ORA-0001 error
+    SELECT /*+ INDEX(index name) */ t.* FROM test t; --强制使用索引
   
     /*INITCAP: returns char, with the first letter of each word in uppercase, all other letters in lowercase*/
     SELECT INITCAP('the soap') "Capitals" FROM DUAL; 
@@ -453,7 +454,7 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
     SELECT * FROM test WHERE 1=1 START WITH id=1 CONNECT BY PRIOR id=pid; --down
   
     /*SUBSTR: return a portion of char, beginning at character position, substring_length characters long*/
-    SELECT SUBSTR('ABCDEFG', 3, 4) "Substring" FROM DUAL;
+    SELECT SUBSTR('ABCDEFG', 3, 4) "Substring" FROM DUAL; --索引从1开始，第一个参数为起始位置，第二个参数为截取长度。起始位置若为负数则从末尾倒推起始位置
     
     /*SYS_GUID(): generates and returns a globally unique identifier (RAW value) made up of 16 bytes*/
     SELECT SYS_GUID() FROM DUAL;
