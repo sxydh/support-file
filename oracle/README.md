@@ -19,6 +19,9 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
     /*all_users*/
     SELECT * FROM all_users;
 
+    /*all_views: 所有视图*/
+    SELECT t.* FROM all_views t;
+
     /*v$database: query the current database name*/
     SELECT name,dbid FROM v$database;
 
@@ -40,6 +43,22 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
 
     /*user_tab_columns: list all col names*/
     SELECT table_name, column_name, data_type, data_length FROM user_tab_columns WHERE table_name = 'TEST'; -- 表名大写
+
+    /*all_constraints: 所有约束*/
+    -- 实战: 找出指定表的所有关联表
+    -- SELECT table_name, constraint_name, status, owner
+    -- FROM all_constraints
+    -- WHERE r_owner = :owner
+    -- AND constraint_type = 'R'
+    -- AND r_constraint_name IN
+    -- (
+    --   SELECT constraint_name FROM all_constraints
+    --   WHERE constraint_type IN ('P', 'U')
+    --   AND table_name = :table_name
+    --   AND owner = :owner
+    -- ) 
+    -- ORDER BY table_name, constraint_name;
+    SELECT t.* FROM all_constraints t;
     ```
 
   * Table space
@@ -149,11 +168,20 @@ Oracle common commands(DDL-Data Definition Language, DCL-Data Control Language, 
     CREATE TABLE test
     (
       ID   NUMBER NOT NULL,
-      NAME VARCHAR2(50)
+      NAME VARCHAR2(50),
+      VALUE NUMBER DEFAULT 0,
+      CDATE DATE DEFAULT SYSDATE
     )
     TABLESPACE test;
-    ALTER TABLE test
-    ADD CONSTRAINT test_primary_key PRIMARY KEY (ID);
+    ALTER TABLE test ADD CONSTRAINT pk_test PRIMARY KEY (ID);
+
+    /*创建临时表*/
+    -- 会话级: 临时表只对当前会话可见
+    CREATE GLOBAL TEMPORARY TABLE tmp
+    (id NUMBER, name VARCHAR(255), value NUMBER, cdate DATE) ON COMMIT PRESERVE ROWS; 
+    -- 事务级: 仅对当前事务内可见
+    CREATE GLOBAL TEMPORARY TABLE tmp
+    (id NUMBER, name VARCHAR(255), value NUMBER, cdate DATE) ON COMMIT DELETE ROWS;
 
     /*Copy and create table*/
     CREATE TABLE testb AS SELECT * FROM testa;

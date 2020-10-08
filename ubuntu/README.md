@@ -36,10 +36,16 @@ Ubuntu guide
     # --version : 显示版本
     # sample : chown -R sxydh cprecharge
     chown [-cfhvR] [--help] [--version] user[:group] file...
+
+    # su
+    su <username> # 切换用户
     ```
 
   * 文件
     ```bash
+    #压缩文件的分卷合并
+    cat linux.x64_11gR2_database_1of2.zip linux.x64_11gR2_database_2of2.zip > 11gR2.zip
+
     #文件权限
     #u 表示该文件的拥有者, g 表示与该文件的拥有者属于同一个群体(group)者, o 表示其他以外的人, a 表示这三者皆是
     #+ 表示增加权限, - 表示取消权限, = 表示唯一设定权限
@@ -109,7 +115,8 @@ Ubuntu guide
     unrar x [file name] #保持文件结构
 
     #解压zip
-    unzip [file name]
+    #-q 执行时不显示任何信息
+    unzip -q [file name]
     ```
 
   * 软件

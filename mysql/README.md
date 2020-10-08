@@ -98,6 +98,9 @@
     
   * 数据操作
     ```sql
+    /*AVG(): The AVG() function returns the average value of an expression*/
+    SELECT AVG(price) AS avgprice FROM products;
+
     /*CONCAT: 拼接字段, 注意如果任一行处拼接时, 有一个值是null, 该处的拼接结果将会是null*/
     SELECT CONCAT(`columnNameA`,'chars',`columnNameB`) FROM `tableName`; 
 
@@ -105,7 +108,7 @@
     DELETE p FROM person p, person d WHERE p.email = d.email AND p.id > d.id; -- 删除重复邮箱
 
     /*GROUP BY*/
-    SELECT GROUP_CONCAT(id), GROUP_CONCAT(user_id), node_id FROM CS_USER_REF_NODE GROUP BY node_id HAVING COUNT(id) >= 1; -- HAVING条件仅针对每一个分组
+    SELECT GROUP_CONCAT(id), GROUP_CONCAT(user_id), node_id FROM CS_USER_REF_NODE GROUP BY node_id HAVING COUNT(id) >= 1; -- HAVING可用于选取符合条件的一些组，不符合条件的组则过滤掉
 
     /*IF*/
     SELECT DISTINCT 
